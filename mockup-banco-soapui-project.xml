@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="86f3c9e4-3ebf-4372-8499-9b175a2156f4" activeEnvironment="Default" name="mockup-banco" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:restMockService id="a32a2325-fa45-4fbc-a405-33cf4e51eb5d" port="8080" path="/" host="DESKTOP-2JRT0IA" name="REST MockService"><con:settings/><con:properties/><con:restMockAction name="sendUser" method="POST" resourcePath="/sendUser" id="43204c03-66d1-4347-8fb1-182f8526283c"><con:settings/><con:defaultResponse>sendUser_response_fallo.json</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("usuario_demo") )
+{
+    return "sendUser_response.json"
+}else {
+    return "sendUser_response_fallo.json"
+}</con:dispatchPath><con:response name="sendUser_response.json" id="0c1dac4b-d31d-4b1b-b626-6cf983761df0" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{  "id_session" : "123456789"
+  "binary_image": "https://alfabetajuega.com/hero/2022/02/Naruto-reddit-ilustracion-naruto-kurama-principal.jpg?width=1200&amp;aspect_ratio=1200:631",
+  "frase": "naruto"
+}</con:responseContent></con:response><con:response name="sendUser_response_fallo.json" id="1209a573-c8ee-4c03-96f2-5e6f018b6847" httpResponseStatus="401" mediaType="application/json"><con:settings/><con:responseContent>{
+  "error": "credencial inexistente",
+  "mensaje": "El usuario enviado no se encuentra registrado"
+}</con:responseContent></con:response></con:restMockAction><con:restMockAction name="initCaptcha" method="GET" resourcePath="/initCaptcha" id="6e677d7e-f115-4020-8268-871fcc261e91"><con:settings/><con:defaultResponse>initCaptcha_response.json</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:dispatchPath>/*&#13;
+// Script dispatcher is used to select a response based on the incoming request.&#13;
+// Here are few examples showing how to match based on path, query param, header and body&#13;
+&#13;
+// Match based on path&#13;
+def requestPath = mockRequest.getPath()&#13;
+log.info "Path: "+ requestPath&#13;
+&#13;
+if( requestPath.contains("json") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "JSON Response"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on query parameter&#13;
+def queryString = mockRequest.getRequest().getQueryString()&#13;
+log.info "QueryString: " + queryString&#13;
+&#13;
+if( queryString.contains("stockholm") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response Stockholm"&#13;
+}&#13;
+else if( queryString.contains("london") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response London"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on header&#13;
+def acceptEncodingHeaderList = mockRequest.getRequestHeaders().get("Accept-Encoding")&#13;
+log.info "AcceptEncoding Header List: " + acceptEncodingHeaderList&#13;
+&#13;
+if( acceptEncodingHeaderList.contains("gzip,deflate") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "GZiped Response"&#13;
+}&#13;
+&#13;
+&#13;
+// Match based on body&#13;
+def requestBody = mockRequest.getRequestContent()&#13;
+log.info "Request body: " + requestBody&#13;
+&#13;
+if( requestBody.contains("some data") )&#13;
+{&#13;
+    // return the name of the response you want to dispatch&#13;
+    return "Response N"&#13;
+}&#13;
+*/&#13;
+</con:dispatchPath><con:response name="initCaptcha_response.json" id="028c7224-0483-4e40-a92e-5ee456d92751" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent><![CDATA[{
+  "frase": "manga",
+  "array_images": [
+    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.educaciontrespuntocero.com%2Flibros%2Fmanga-para-adolescentes%2F&psig=AOvVaw3N6G9LtE-KfdQ1s2o44uVM&ust=1651798602057000&source=images&cd=vfe&ved=0CAkQjRxqFwoTCNjo_r6Tx_cCFQAAAAAdAAAAABAD",
+    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.wikihow.com%2Fleer-manga&psig=AOvVaw3N6G9LtE-KfdQ1s2o44uVM&ust=1651798602057000&source=images&cd=vfe&ved=0CAkQjRxqFwoTCNjo_r6Tx_cCFQAAAAAdAAAAABAJ"
+  ]
+}]]></con:responseContent></con:response></con:restMockAction><con:restMockAction name="checkCaptcha" method="POST" resourcePath="/checkCaptcha" id="df9e0026-1ba4-4764-9885-cad31e9ba156"><con:settings/><con:defaultResponse>checkCaptcha_response_false.json</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("manga") &amp;&amp; requestBody.contains("A1") )
+{
+    return "checkCaptcha_response_true.json"
+}else{
+    return "checkCaptcha_response_false.json"
+}
+</con:dispatchPath><con:response name="checkCaptcha_response_true.json" id="d458cddd-782d-46dd-8e9a-df0a9b806a4c" httpResponseStatus="200" mediaType="application/json"><con:settings/><con:responseContent>{
+  "frase": "true"
+}</con:responseContent></con:response><con:response name="checkCaptcha_response_false.json" id="d57c03e8-fdc2-436a-ac94-8ecae73dff4d" httpResponseStatus="404" mediaType="application/json"><con:settings/><con:responseContent>{
+  "frase": "false"
+}</con:responseContent></con:response></con:restMockAction><con:restMockAction name="sendPassword" method="POST" resourcePath="/sendPassword" id="e7118648-0ab2-41af-95c3-24ba8cac5572"><con:settings/><con:defaultResponse>sendUser_response.json</con:defaultResponse><con:dispatchStyle>SCRIPT</con:dispatchStyle><con:dispatchPath>// Match based on body
+def requestBody = mockRequest.getRequestContent()
+log.info "Request body: " + requestBody
+
+if( requestBody.contains("123456789") &amp;&amp; requestBody.contains("naruto") )
+{
+    return "sendPassword_response_true.json"
+    
+}else{
+    return "sendPassword_response_false.json"
+}
+</con:dispatchPath><con:response name="sendPassword_response_false.json" id="2c4d733b-dbc2-4984-82e6-b3b12472ff43" httpResponseStatus="200"><con:settings/><con:responseContent>{
+  "boolean": "false"
+}</con:responseContent></con:response><con:response name="sendPassword_response_true.json" id="b3882a67-45f3-4207-8dfc-05b169a0ac15" httpResponseStatus="200"><con:settings/><con:responseContent>{
+  "boolean": "true"
+}</con:responseContent></con:response></con:restMockAction></con:restMockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "ec59dcb5-da9b-485a-b3bd-2f96dd87c681",
+		"name": "gestion_ti",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sendUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"usuario\": \"usuario_demo\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sendUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sendUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendUser fallo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"usuario\": \"usuario_demo\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sendUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sendUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "checkCaptcha_true",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"frase\": \"manga\",\r\n  \"array_images\": [\r\n    \"A1\",\r\n    \"B1\",\r\n    \"A2\",\r\n    \"A3\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/checkCaptcha",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checkCaptcha"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "checkCaptcha_false",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/checkCaptcha",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"checkCaptcha"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendPassword_response_true",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sendPassword",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sendPassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sendPassword_response_false",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id_session\": \"1234567895555\",\r\n  \"binary_image\": \"https://i0.wp.com/codigoespagueti.com/wp-content/uploads/2021/11/Naruto-fanart-imagina-villano-historia.jpg?fit=1280%2C720&quality=80&ssl=1\",\r\n  \"frase\": \"narut4o\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/sendPassword",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sendPassword"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
